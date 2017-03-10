@@ -4,16 +4,29 @@
 $fa-font-path: '//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts';
 
 
-// Variables
+// Override Variables
 $c-blue: hsl(218, 71%, 53%);
+
+
+//
 $c-primary: $c-blue;
 
 
-// @import 'font-awesome';
-@import 'bulma/bulma';
+
+@import 'bulma';
+@import 'font-awesome';
 @import 'box-sizing';
 
 
 .nav {
   background: $c-primary;
+
+  & a.nav-item {
+    color: white-bis;
+  }
+}
+
+.is-brand {
+  font-size: 1.2rem;
+  font-weight: normal;
 }

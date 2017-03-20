@@ -1,8 +1,7 @@
 <template lang="html">
-<div class="">
-    <!-- Adopt Puppers Sidebar -->
+  <div class="">
 
-</div>
+  </div>
 </template>
 
 <script>

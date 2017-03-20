@@ -9,7 +9,7 @@ $blue: hsl(218, 71%, 53%);
 
 
 // ???
-$c-primary: $blue;
+$primary: $blue;
 
 
 @import 'bulma';
@@ -17,7 +17,7 @@ $c-primary: $blue;
 @import 'box-sizing';
 
 .nav {
-  background: $c-primary;
+  background: $primary;
 }
 
 a.nav-item {

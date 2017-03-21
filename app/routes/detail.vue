@@ -1,11 +1,13 @@
 <template lang="html">
-  <div class="">
 
-  </div>
+<h2>DETAIL VUE MOTHER EFFER</h2>
+
 </template>
 
 <script>
 export default {
+  name: 'Detail',
+
   data() {
     return {
     };

@@ -1,56 +1,82 @@
 <template lang="html">
 
+
 <div class="">
+
   <h2> Add a new PUP!</h2>
 
   <form>
-    <p>
-      <label for="name">Name</label>
-    </p>
-    <p>
-      <input v-model="formValues.name" type="text" name="name">
-    </p>
-    <p>
-      <label for="age">Age</label>
-    </p>
-    <p>
-      <input v-model="formValues.age" type="text" name="age">
-    </p>
-    <p>
-      <label for="sex">Sex</label>
-    </p>
-    <p>
-      <select v-model="formValues.sex" name="sex">
-    </p>
-    <p>
-      <label for="color">Color</label>
-    </p>
-    <p>
-      <input v-model="formValues.color" type="text" name="color">
-    </p>
-    <p>
-      <label for="breed">Breed</label>
-    </p>
-    <p>
-      <input v-model="formValues.breed" type="text" name="breed">
-    </p>
-    <p>
-      <label for="image_url">Image Url</label>
-    </p>
-    <p>
-      <input v-model="formValues.image_url" type="text" name="image_url">
-    </p>
-    <p>
-      <label for="description">Description</label>
-    </p>
-    <p>
-      <input v-model="formValues.description" type="text" name="description">
-    </p>
+    <!-- Name Control -->
+    <div class="field">
+      <label for="name" class="label">Name</label>
+      <p class="control">
+        <input v-model="formValues.name" class="input" type="text" name="name">
+      </p>
+    </div>
 
-    <button type="button">Back</button>
-    <button type="submit">Submit</button>
+    <!-- Age Control -->
+    <div class="field">
+      <label for="age" class="label">Age</label>
+      <p class="control">
+        <input v-model="formValues.age" class="input" type="text" name="age">
+      </p>
+    </div>
+
+    <!-- Sex Control -->
+    <div class="field">
+      <label for="sex" class="label">Sex</label>
+      <p class="control">
+        <select v-model="formValues.sex" class="select" name="sex">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </p>
+    </div>
+
+    <!-- Color Control -->
+    <div class="field">
+      <label for="color" class="label">Color</label>
+      <p class="control">
+        <input v-model="formValues.color" class="input" type="text" name="color">
+      </p>
+    </div>
+
+    <!-- Breed Control -->
+    <div class="field">
+      <label for="breed" class="label">Breed</label>
+      <p class="control">
+        <input v-model="formValues.breed" class="input" type="text" name="breed">
+      </p>
+    </div>
+
+    <!-- Image Url Control -->
+    <div class="field">
+      <label for="image_url" class="label">Image Url</label>
+      <p class="control">
+        <input v-model="formValues.image_url" class="input" type="text" name="image_url">
+      </p>
+    </div>
+
+    <!-- Description Control -->
+    <div class="field">
+      <label for="description" class="label">Description</label>
+      <p class="control">
+        <textarea v-model="formValues.description" class="textarea" name="description"></textarea>
+      </p>
+    </div>
+
+    <div class="field is-grouped">
+      <p class="control">
+        <button type="button" class="button">Back</button>
+      </p>
+      <p class="control">
+        <button type="submit" class="button is-primary">Submit</button>
+      </p>
+    </div>
   </form>
-  </div>
+
+
+</div>
 
 </template>
 

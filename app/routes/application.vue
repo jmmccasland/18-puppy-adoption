@@ -26,7 +26,7 @@
             <div class="panel-block">
 
               <div class="media-left">
-              <img src="http://www.placecera.com/200/200" alt="" class="image is-128x128">
+                <img src="http://www.placecera.com/200/200" alt="" class="image is-128x128">
               </div>
 
               <div class="right">
@@ -38,8 +38,10 @@
           </div><!-- /.panel -->
         </div><!-- /.column -->
 
-        <!-- Router Views Render Here!!! Woo Woo! -->
-        <router-view></router-view>
+        <div class="column">
+          <!-- Router Views Render Here!!! Woo Woo! -->
+          <router-view></router-view>
+        </div><!-- /.column -->
 
       </div><!-- /.columns -->
     </div><!-- /.container -->

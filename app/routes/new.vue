@@ -5,7 +5,7 @@
 
   <h2> Add a new PUP!</h2>
 
-  <form>
+  <form v-on:submit.prevent="submit">
     <!-- Name Control -->
     <div class="field">
       <label for="name" class="label">Name</label>
@@ -67,7 +67,7 @@
 
     <div class="field is-grouped">
       <p class="control">
-        <button type="button" class="button">Back</button>
+        <router-link v-bind:to="{ name: 'index' }" tag="button" type="button" class="button">Back</router-link>
       </p>
       <p class="control">
         <button type="submit" class="button is-primary">Submit</button>
@@ -81,6 +81,9 @@
 </template>
 
 <script>
+import store from '../store';
+import { create } from '../actions/puppy';
+
 export default {
   name: 'New',
 
@@ -99,7 +102,11 @@ export default {
   },
 
   methods: {
-
+    submit() {
+      store.dispatch(create(this.formValues)).then(() => {
+        this.$router.push({ name: 'index' });
+      });
+    },
   },
 };
 </script>

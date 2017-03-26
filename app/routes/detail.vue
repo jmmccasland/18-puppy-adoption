@@ -2,7 +2,13 @@
   <div class="">
     <div v-if="currentPuppy" class="level has-text-centered">
       <span><h2 class=" level-item title">{{ currentPuppy.name }}</h2></span>
-       <span><button class="button is-success"><span class="fa fa-paw fa-pull-left"></span> I'm Adopted!</button></span>
+       <span>
+         <button v-on:click="adopt" class="button is-success">
+          <span class="fa fa-paw fa-pull-left"></span>
+          <span v-if="currentPuppy.adopted">I'm adopted!</span>
+          <span v-else>Adopt me!</span>
+        </button>
+       </span>
     </div>
 
     <div class="columns">

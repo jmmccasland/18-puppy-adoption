@@ -37,9 +37,42 @@ export function create(formData) {
 }
 
 // findOne
-export function findOneComplete() {
+export function findOneComplete(data = {}) {
   return {
     type: 'PUPPY@FINDONE_COMPLETE',
     data,
   };
+}
+
+export function findOne(id) {
+  return dispatch => fetch(`${apiUrl}/${id}`)
+  .then(r => r.json())
+  .then(puppy => dispatch(findOneComplete(puppy)));
+}
+
+// update
+export function updateComplete(data = []) {
+  return {
+    type: 'PUPPY@FINDONE_COMPLETE',
+    data,
+  };
+}
+
+
+export function update(id, formData) {
+  return dispatch => fetch(`${apiUrl}/${id}`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+  }).then(r => r.json())
+    .then((puppy) => {
+      dispatch(updateComplete(puppy));
+    });
+}
+
+// toggle adopted
+export function toggleAdopted(puppy) {
+  return update(puppy.id, { ...puppy, adopted: !puppy.adopted });
 }

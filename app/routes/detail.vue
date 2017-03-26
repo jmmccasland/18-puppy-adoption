@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
-    <div class="level has-text-centered">
-      <span><h2 class=" level-item title">{{puppy.name}}</h2></span>
+    <div v-if="currentPuppy" class="level has-text-centered">
+      <span><h2 class=" level-item title">{{ currentPuppy.name }}</h2></span>
        <span><button class="button is-success"><span class="fa fa-paw fa-pull-left"></span> I'm Adopted!</button></span>
     </div>
 
@@ -10,7 +10,7 @@
         <div class="card is-full-width">
           <div class="card-image">
             <figure class="image">
-              <img src="http://www.placecage.com/c/200/200" alt="" class="image">
+              <img v-bind:src="currentPuppy.image_url" alt="" class="image">
             </figure>
           </div>
         </div>
@@ -21,28 +21,28 @@
       <div class="level-item">
         <div>
           <p class="heading">Age</p>
-          <p class="title">3,456</p>
+          <p class="title">{{currentPuppy.age}}</p>
         </div>
       </div>
 
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">Breed</p>
-          <p class="title">3,456</p>
+          <p class="title">{{currentPuppy.breed}}</p>
         </div>
       </div>
 
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">Color</p>
-          <p class="title">3,456</p>
+          <p class="title">{{currentPuppy.color}}</p>
         </div>
       </div>
 
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">Sex</p>
-          <p class="title">3,456</p>
+          <p class="title">{{currentPuppy.sex}}</p>
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@
     <div class="is-fullwidth">
      <div class="">
        <h3 class="subtitle">About Me</h3>
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque quaerat iusto eum error, vel, harum quo debitis praesentium numquam tempora aliquid laborum! Culpa nesciunt rerum, assumenda facilis, unde id quod.</p>
+       <p>{{currentPuppy.description}}</p>
      </div>
    </div>
  </div>
@@ -62,7 +62,8 @@
 
 <script>
 import store from '../store';
-import { findAll } from '../actions/puppy';
+import { findOne } from '../actions/puppy';
+import { toggleAdopted } from '../actions/puppy';
 
 export default {
   name: 'Detail',
@@ -70,15 +71,26 @@ export default {
   data() {
     return {
       puppies: this.$select('puppies'),
+      currentPuppy: null,
     };
   },
-
   mounted() {
-    store.dispatch(findAll());
+    store.dispatch(findOne(this.$route.params.id));
+  },
+
+  watch: {
+    puppies: 'getPuppy',
+    '$route.params.id': 'getPuppy',
   },
 
   methods: {
+    getPuppy() {
+      this.currentPuppy = this.puppies.find(puppy => puppy.id === this.$route.params.id);
+    },
 
+    adopt() {
+      store.dispatch(toggleAdopted(this.currentPuppy));
+    }
   },
 };
 </script>

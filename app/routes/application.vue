@@ -23,18 +23,19 @@
         <div class="column is-one-third">
           <div class="panel">
             <h3 class="panel-heading">Adopt a Pupper</h3>
-            <div class="panel-block">
+
+            <div v-for="puppy in puppies" class="panel-block">
               <article class="media">
                 <figure class="media-left">
                   <p class="image is-64x64">
-                    <img src="http://www.placecera.com/200/200" alt="">
+                    <img v-bind:src="puppy.image_url" alt="">
                   </p>
                 </figure>
 
                 <div class="media-content">
                   <div class="content">
-                    <div>Pupper Name</div>
-                    <router-link v-bind:to="{ name: 'detail' }">read more</router-link>
+                    <div>{{puppy.name}}</div>
+                    <router-link v-bind:to="{ name: 'detail', params: { id: puppy.id } }">read more</router-link>
                   </div>
                 </div>
               </article>
@@ -56,11 +57,20 @@
 </template>
 
 <script>
+import store from '../store';
+import { findAll } from '../actions/puppy';
+
 export default {
   name: 'Application',
 
   data() {
-    return {};
+    return {
+      puppies: this.$select('puppies'),
+    };
+  },
+
+  mounted() {
+    store.dispatch(findAll());
   },
 
   methods: {

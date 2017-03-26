@@ -6,7 +6,7 @@
         <h1 class="title level-item">Puppies For Adoption</h2>
       </div>
       <div class="level-right">
-        <button class="button is-info level-item">Add a Pupper</button>
+        <router-link v-bind:to="{ name: 'new' }" tag="button" class="button is-info level-item">Add a Pupper</router-link>
       </div>
     </div>
 
@@ -33,7 +33,10 @@
       <tr>
         <td>Pupper Name</td>
         <td>13</td>
-        <td>read more</td>
+        <td>
+          <!-- Update path to name: detail with params after you put in for loop -->
+          <router-link v-bind:to="{ path: '/posts/:id' }">read more</router-link>
+        </td>
       </tr>
 
     </table>

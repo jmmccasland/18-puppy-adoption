@@ -24,15 +24,20 @@
           <div class="panel">
             <h3 class="panel-heading">Adopt a Pupper</h3>
             <div class="panel-block">
+              <article class="media">
+                <figure class="media-left">
+                  <p class="image is-64x64">
+                    <img src="http://www.placecera.com/200/200" alt="">
+                  </p>
+                </figure>
 
-              <div class="media-left">
-                <img src="http://www.placecera.com/200/200" alt="" class="image is-128x128">
-              </div>
-
-              <div class="right">
-                <h4>Pupper Name</h4>
-                <router-link v-bind:to="{ name: 'detail' }">read more</router-link>
-              </div>
+                <div class="media-content">
+                  <div class="content">
+                    <div>Pupper Name</div>
+                    <router-link v-bind:to="{ name: 'detail' }">read more</router-link>
+                  </div>
+                </div>
+              </article>
             </div><!-- /.panel-block -->
 
           </div><!-- /.panel -->

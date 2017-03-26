@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
     <div class="level has-text-centered">
-      <span><h2 class=" level-item title">Pupper Name</h2></span>
+      <span><h2 class=" level-item title">{{puppy.name}}</h2></span>
        <span><button class="button is-success"><span class="fa fa-paw fa-pull-left"></span> I'm Adopted!</button></span>
     </div>
 
@@ -61,13 +61,20 @@
 </template>
 
 <script>
+import store from '../store';
+import { findAll } from '../actions/puppy';
+
 export default {
   name: 'Detail',
 
   data() {
     return {
-
+      puppies: this.$select('puppies'),
     };
+  },
+
+  mounted() {
+    store.dispatch(findAll());
   },
 
   methods: {
